@@ -3,34 +3,39 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidgetComponent from '../CartWidgetComponent/CartWidgetComponent';
-
+import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Category from '../../pages/Category';
 const NavBarComponent = () => {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+     axios.get('https://dummyjson.com/products/categories').then(res => setCategories(res.data)).catch(error => console.log(error));
+  }, []);
+
+console.log(categories);
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">
-            <img
-              src="./imagen/TM.logo.png"
-              width="20%"
-              height="20%"
-              className="d-inline-block align-top"
-              alt="React Bootstrap logo"
-            /></Navbar.Brand>
+        <Navbar.Brand><Link to={"/"}>Tienda Electronica</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#Contactos">Contactos</Nav.Link>
             <Nav.Link href="#QuienesSomos">Quienes Somos</Nav.Link>
-            <NavDropdown title="Productos" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#Sahumerios">Sahumerios</NavDropdown.Item>
-              <NavDropdown.Item href="#Cascada">
-                Cascadas
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#Budas">Budas</NavDropdown.Item>
-              <NavDropdown.Item href="#Velas">
-                Velas
-              </NavDropdown.Item>
+            <NavDropdown title="Category" id="basic-nav-dropdown">
+              {
+                categories.map((Category, index) => {
+                  return(
+                    <NavDropdown.Item key={index}><Link to={`/category/${Category}`}>{Category}</Link></NavDropdown.Item>
+                  )
+                })
+              }
+              
+              
+              
             </NavDropdown>
           </Nav>
           <CartWidgetComponent />
