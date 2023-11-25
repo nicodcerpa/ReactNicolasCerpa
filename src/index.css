@@ -1,10 +1,55 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
 body {
-    background-color: brown;
-         
-  }
+  background-image: url("../imagen/humo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: red;
+}
+
+.nav-link:hover {
+  color: brown!important;
+  text-decoration: none;
   
+}
+ 
+ .navbar-brand {
+  margin: 2%;
+  width: 30%;
+  text-decoration: none;
+ }
+ 
 
+ .NavDropdown.Item .key{
+  text-decoration: none;
+ }
+
+ .nav-link {
+  color: red;
+ }
+    
+
+
+.card {
+      display: grid;
+      padding: auto;
+      margin-top: 10%;
+      background-color: black;
+      gap: 100px;
+      width: 25rem;
+      max-width: 1200px;
+      color: aliceblue;
+      
   
+  
+}
 
-
-   
+.card .card-img {
+  width: 50%;
+  
+}

@@ -7,7 +7,7 @@ const Home = () => {
   
   useEffect(() => {
    axios
-   .get("https://dummyjson.com/products")
+   .get("https://dummyjson.com/products/?limit=20")
    .then(res => {
     setProducts(res.data.products);
    })

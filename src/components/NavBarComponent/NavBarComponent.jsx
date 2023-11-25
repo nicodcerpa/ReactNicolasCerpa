@@ -6,7 +6,7 @@ import CartWidgetComponent from '../CartWidgetComponent/CartWidgetComponent';
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Category from '../../pages/Category';
+
 const NavBarComponent = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
@@ -16,11 +16,11 @@ const NavBarComponent = () => {
 console.log(categories);
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="bg-dark" >
       <Container>
-        <Navbar.Brand><Link to={"/"}>Tienda Electronica</Link></Navbar.Brand>
+        <Navbar.Brand><Link to={"/"}style={{ textDecoration: "none", color: "red" }}>Tienda Electronica</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav ">
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#Contactos">Contactos</Nav.Link>
@@ -29,7 +29,7 @@ console.log(categories);
               {
                 categories.map((Category, index) => {
                   return(
-                    <NavDropdown.Item key={index}><Link to={`/category/${Category}`}>{Category}</Link></NavDropdown.Item>
+                    <NavDropdown.Item key={index}><Link to={`/category/${Category}`}style={{ textDecoration: "none", color: "black" }}>{Category}</Link></NavDropdown.Item>
                   )
                 })
               }
